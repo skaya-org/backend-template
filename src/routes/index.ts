@@ -1,6 +1,59 @@
 import { Request, Response } from 'express';
 import { ApiResponse } from '../types';
 
+/**
+ * @swagger
+ * /chat:
+ *   get:
+ *     summary: Get a sample AI response
+ *     description: Returns a random sample response from an AI
+ *     tags: [Chat]
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "AI response generated successfully"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     response:
+ *                       type: string
+ *                       example: "Hello! How can I assist you today?"
+ *                     timestamp:
+ *                       type: string
+ *                       format: date-time
+ *       500:
+ *         description: Error response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: "Internal server error"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     response:
+ *                       type: string
+ *                       example: ""
+ *                     timestamp:
+ *                       type: string
+ *                       format: date-time
+ */
 export const getChatResponse = (req: Request, res: Response<ApiResponse>) => {
   try {
     const sampleResponses = [
@@ -35,3 +88,4 @@ export const getChatResponse = (req: Request, res: Response<ApiResponse>) => {
     });
   }
 };
+
